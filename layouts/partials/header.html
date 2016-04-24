@@ -1,3 +1,14 @@
+{{ .Scratch.Add "title" "" }}
+{{ .Scratch.Add "description" "" }}
+
+{{ if isset .Site.Data.titles .Title }}
+    {{ .Scratch.Set "title" (index .Site.Data.titles .Title).title }}
+    {{ .Scratch.Set "description" (index .Site.Data.titles .Title).description }}
+{{ else }}
+    {{ .Scratch.Set "title" .Title}}
+    {{ .Scratch.Set "description" .Description}}
+{{end}}
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
@@ -16,7 +27,7 @@
   {{ end }}
 
   <!-- goes into the title bar -->
-  <title>{{ .Title }}</title>
+  <title>{{ .Scratch.Get "title" }}</title>
 
   <!-- css -->
   <!-- original css -->
