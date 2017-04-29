@@ -28,8 +28,8 @@
             <footer>
               <span class="categories"> <!-- show tags -->
                 tags:
-                {{ if isset .Params "categories" }}
-                {{ range .Params.tags }} <a class="category" href="{{ "/tags/" | absURL }}{{ . | urlize | lower }}">{{ . }}</a>{{ end }}
+                {{ if isset .Params "blog/categories" }}
+                {{ range (index .Params "blog/categories") }} <a class="category" href="{{ "/blog/categories/" | absURL }}{{ . | urlize | lower }}">{{ . }}</a>{{ end }}
                 {{ end }}
               </span>
             </footer>

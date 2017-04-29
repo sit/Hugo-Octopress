@@ -5,11 +5,11 @@
         {{ if not .Site.Params.disableReadingTime }} - {{ .ReadingTime }} minute read {{ end }}
         {{ if .Site.Params.disqusShortname }} - <a href="{{ .Permalink }}#disqus_thread">Comments</a>{{ end }}
 
-        {{ if isset .Params "categories" }}
+        {{ if isset .Params "blog/categories" }}
         <!-- <br/> this will make the categories go to the second line and mess with the title -->
         <!-- in order to make category URLs work, we need to urlize them and then convert them to lowercase
              e.g. .NET Remoting -urlize-> .NET-Remoting -lowercase-> .net-remoting -->
-            - {{ range .Params.categories }}<a class="label" href="{{ "/categories/" | absURL }}{{ . | urlize | lower }}/">{{ . }} </a>{{ end }}
+            - {{ range (index .Params "blog/categories") }}<a class="label" href="{{ "/blog/categories/" | absURL }}{{ . | urlize | lower }}/">{{ . }} </a>{{ end }}
         {{ end }}
     </p>
     <h1 class="entry-title">
